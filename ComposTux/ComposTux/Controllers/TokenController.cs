@@ -14,6 +14,7 @@ namespace ComposTux.Controllers
     [RoutePrefix("api/authentication")]
     public class TokenController : ApiController
     {
+        BussinesLayer.BLLogin login = new BussinesLayer.BLLogin();
         [HttpPost]
         [Route("authenticate")]
         public IHttpActionResult Authenticate(TokenRequest token)
@@ -21,14 +22,13 @@ namespace ComposTux.Controllers
             if (token == null)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
-            var isValid = true;
-            if (isValid)
+            var isValid = login.DoLogin(token.UserName,token.Password).Result;
+            if(isValid.Result != null)
             {
                 var rolename = "Admin";
                 var response = TokenGenerator.GenerateTokenJwt(token.UserName, rolename);
-                return Ok(token);
+                return Ok(response);
             }
-            
             return Unauthorized();
         }
     }

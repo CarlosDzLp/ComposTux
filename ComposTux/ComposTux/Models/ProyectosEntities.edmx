@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ProyectosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="spInsAssignUserCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Idcompany" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Iduser" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="spInsCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyName" Type="varchar" Mode="In" />
+          <Parameter Name="CompanyAddress" Type="varchar" Mode="In" />
+          <Parameter Name="Latitud" Type="varchar" Mode="In" />
+          <Parameter Name="Longitud" Type="varchar" Mode="In" />
+          <Parameter Name="IdUser" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="spInserUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PlayerID" Type="text" Mode="In" />
+          <Parameter Name="Pushtoken" Type="text" Mode="In" />
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="UserType" Type="bit" Mode="In" />
+          <Parameter Name="Privaticy" Type="bit" Mode="In" />
+          <Parameter Name="Latitud" Type="varchar" Mode="In" />
+          <Parameter Name="Longitud" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spSelAllCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spSelAssignUserCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Iduser" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="spSelCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUser" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="spSelToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUser" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="spSelUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NameUser" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spUpdCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyName" Type="varchar" Mode="In" />
+          <Parameter Name="CompanyAddress" Type="varchar" Mode="In" />
+          <Parameter Name="Latitud" Type="varchar" Mode="In" />
+          <Parameter Name="Longitud" Type="varchar" Mode="In" />
+          <Parameter Name="IdUser" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="companyID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="spUpdToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUser" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="PlayerId" Type="text" Mode="In" />
+          <Parameter Name="PushToken" Type="text" Mode="In" />
+        </Function>
+        <Function Name="spUpdUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUser" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="UserType" Type="bit" Mode="In" />
+          <Parameter Name="Privaticy" Type="bit" Mode="In" />
+          <Parameter Name="Latitud" Type="varchar" Mode="In" />
+          <Parameter Name="Longitud" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="ProyectosModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProyectosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ProyectosEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="spInsCompany">
+            <Parameter Name="CompanyName" Mode="In" Type="String" />
+            <Parameter Name="CompanyAddress" Mode="In" Type="String" />
+            <Parameter Name="Latitud" Mode="In" Type="String" />
+            <Parameter Name="Longitud" Mode="In" Type="String" />
+            <Parameter Name="IdUser" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="spInserUser">
+            <Parameter Name="PlayerID" Mode="In" Type="String" />
+            <Parameter Name="Pushtoken" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="UserType" Mode="In" Type="Boolean" />
+            <Parameter Name="Privaticy" Mode="In" Type="Boolean" />
+            <Parameter Name="Latitud" Mode="In" Type="String" />
+            <Parameter Name="Longitud" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spSelCompany" ReturnType="Collection(ProyectosModel.spSelCompany_Result)">
+          <Parameter Name="IdUser" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="spSelToken" ReturnType="Collection(ProyectosModel.spSelToken_Result)">
+          <Parameter Name="IdUser" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="spSelUser" ReturnType="Collection(ProyectosModel.spSelUser_Result)">
+            <Parameter Name="NameUser" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spUpdCompany">
+            <Parameter Name="CompanyName" Mode="In" Type="String" />
+            <Parameter Name="CompanyAddress" Mode="In" Type="String" />
+            <Parameter Name="Latitud" Mode="In" Type="String" />
+            <Parameter Name="Longitud" Mode="In" Type="String" />
+            <Parameter Name="IdUser" Mode="In" Type="Guid" />
+            <Parameter Name="companyID" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="spUpdToken">
+            <Parameter Name="IdUser" Mode="In" Type="Guid" />
+            <Parameter Name="PlayerId" Mode="In" Type="String" />
+            <Parameter Name="PushToken" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spUpdUser">
+            <Parameter Name="IdUser" Mode="In" Type="Guid" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="UserType" Mode="In" Type="Boolean" />
+            <Parameter Name="Privaticy" Mode="In" Type="Boolean" />
+            <Parameter Name="Latitud" Mode="In" Type="String" />
+            <Parameter Name="Longitud" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spInsAssignUserCompany">
+            <Parameter Name="Idcompany" Mode="In" Type="Guid" />
+            <Parameter Name="Iduser" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="spSelAssignUserCompany" ReturnType="Collection(ProyectosModel.spSelAssignUserCompany_Result)">
+          <Parameter Name="Iduser" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="spSelAllCompany" ReturnType="Collection(ProyectosModel.spSelAllCompany_Result)" />
+        </EntityContainer>
+        <ComplexType Name="spSelCompany_Result">
+          <Property Type="Guid" Name="IdCompany" Nullable="false" />
+          <Property Type="String" Name="CompanyName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CompanyAddress" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CompanyLatitud" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CompanyLongitud" Nullable="false" MaxLength="100" />
+          <Property Type="Guid" Name="IdUser" Nullable="false" />
+          <Property Type="Boolean" Name="CompanyActive" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spSelToken_Result">
+          <Property Type="Guid" Name="IdToken" Nullable="false" />
+          <Property Type="String" Name="PlayerId" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="PushToken" Nullable="false" MaxLength="Max" />
+          <Property Type="Guid" Name="IdUser" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spSelUser_Result">
+          <Property Type="Guid" Name="IdUser" Nullable="false" />
+          <Property Type="String" Name="NameUser" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastNameUser" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="PasswordUser" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="UserType" Nullable="false" />
+          <Property Type="Boolean" Name="UserActive" Nullable="false" />
+          <Property Type="Boolean" Name="Privacity" Nullable="false" />
+          <Property Type="String" Name="Latitud" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Longitud" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="spSelAssignUserCompany_Result">
+          <Property Type="Guid" Name="IdAssignUserCompany" Nullable="false" />
+          <Property Type="Guid" Name="IdCompany" Nullable="true" />
+          <Property Type="Guid" Name="IdUser" Nullable="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Datemodified" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="spSelAllCompany_Result">
+          <Property Type="Guid" Name="IdCompany" Nullable="false" />
+          <Property Type="String" Name="CompanyName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CompanyAddress" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CompanyLatitud" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CompanyLongitud" Nullable="false" MaxLength="100" />
+          <Property Type="Guid" Name="IdUser" Nullable="false" />
+          <Property Type="Boolean" Name="CompanyActive" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProyectosModelStoreContainer" CdmEntityContainer="ProyectosEntities" >
+          <FunctionImportMapping FunctionImportName="spInsCompany" FunctionName="ProyectosModel.Store.spInsCompany" />
+          <FunctionImportMapping FunctionImportName="spInserUser" FunctionName="ProyectosModel.Store.spInserUser" />
+          <FunctionImportMapping FunctionImportName="spSelCompany" FunctionName="ProyectosModel.Store.spSelCompany">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectosModel.spSelCompany_Result">
+                <ScalarProperty Name="IdCompany" ColumnName="IdCompany" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="CompanyLatitud" ColumnName="CompanyLatitud" />
+                <ScalarProperty Name="CompanyLongitud" ColumnName="CompanyLongitud" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="CompanyActive" ColumnName="CompanyActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSelToken" FunctionName="ProyectosModel.Store.spSelToken">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectosModel.spSelToken_Result">
+                <ScalarProperty Name="IdToken" ColumnName="IdToken" />
+                <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+                <ScalarProperty Name="PushToken" ColumnName="PushToken" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSelUser" FunctionName="ProyectosModel.Store.spSelUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectosModel.spSelUser_Result">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="NameUser" ColumnName="NameUser" />
+                <ScalarProperty Name="LastNameUser" ColumnName="LastNameUser" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PasswordUser" ColumnName="PasswordUser" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="UserActive" ColumnName="UserActive" />
+                <ScalarProperty Name="Privacity" ColumnName="Privacity" />
+                <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spUpdCompany" FunctionName="ProyectosModel.Store.spUpdCompany" />
+          <FunctionImportMapping FunctionImportName="spUpdToken" FunctionName="ProyectosModel.Store.spUpdToken" />
+          <FunctionImportMapping FunctionImportName="spUpdUser" FunctionName="ProyectosModel.Store.spUpdUser" />
+          <FunctionImportMapping FunctionImportName="spInsAssignUserCompany" FunctionName="ProyectosModel.Store.spInsAssignUserCompany" />
+          <FunctionImportMapping FunctionImportName="spSelAssignUserCompany" FunctionName="ProyectosModel.Store.spSelAssignUserCompany">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectosModel.spSelAssignUserCompany_Result">
+                <ScalarProperty Name="IdAssignUserCompany" ColumnName="IdAssignUserCompany" />
+                <ScalarProperty Name="IdCompany" ColumnName="IdCompany" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Datemodified" ColumnName="Datemodified" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSelAllCompany" FunctionName="ProyectosModel.Store.spSelAllCompany">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectosModel.spSelAllCompany_Result">
+                <ScalarProperty Name="IdCompany" ColumnName="IdCompany" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="CompanyLatitud" ColumnName="CompanyLatitud" />
+                <ScalarProperty Name="CompanyLongitud" ColumnName="CompanyLongitud" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="CompanyActive" ColumnName="CompanyActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

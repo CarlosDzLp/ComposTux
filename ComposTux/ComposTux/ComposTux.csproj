@@ -67,6 +67,7 @@
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.4.0\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
     </Reference>
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -179,18 +180,60 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="BussinesLayer\BLAssingment.cs" />
+    <Compile Include="BussinesLayer\BLCompany.cs" />
+    <Compile Include="BussinesLayer\BLLogin.cs" />
+    <Compile Include="BussinesLayer\BLToken.cs" />
+    <Compile Include="Controllers\AssignmentController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TokenController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Entities\AssignUserCompany.cs" />
+    <Compile Include="Entities\Company.cs" />
+    <Compile Include="Entities\ProyectosM.cs" />
+    <Compile Include="Entities\Token.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProyectosEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProyectosEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProyectosEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProyectosEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProyectosEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProyectosEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spSelAllCompany_Result.cs">
+      <DependentUpon>ProyectosEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spSelAssignUserCompany_Result.cs">
+      <DependentUpon>ProyectosEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spSelCompany_Result.cs">
+      <DependentUpon>ProyectosEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spSelToken_Result.cs">
+      <DependentUpon>ProyectosEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spSelUser_Result.cs">
+      <DependentUpon>ProyectosEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Secutiry\TokenGenerator.cs" />
     <Compile Include="Secutiry\TokenValidationHandler.cs" />
+    <Compile Include="ViewModels\BaseResult.cs" />
     <Compile Include="ViewModels\TokenRequest.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -201,6 +244,16 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\ProyectosEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProyectosEntities.edmx</DependentUpon>
+      <LastGenOutput>ProyectosEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ProyectosEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProyectosEntities.edmx</DependentUpon>
+      <LastGenOutput>ProyectosEntities.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -222,7 +275,15 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <EntityDeploy Include="Models\ProyectosEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ProyectosEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ProyectosEntities.edmx.diagram">
+      <DependentUpon>ProyectosEntities.edmx</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -246,9 +307,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="BussinesLayer\" />
-    <Folder Include="Entities\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -278,6 +336,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

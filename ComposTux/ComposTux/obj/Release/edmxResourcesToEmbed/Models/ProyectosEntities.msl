@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProyectosModelStoreContainer" CdmEntityContainer="ProyectosEntities">
+    <FunctionImportMapping FunctionImportName="spInsCompany" FunctionName="ProyectosModel.Store.spInsCompany" />
+    <FunctionImportMapping FunctionImportName="spInserUser" FunctionName="ProyectosModel.Store.spInserUser" />
+    <FunctionImportMapping FunctionImportName="spSelCompany" FunctionName="ProyectosModel.Store.spSelCompany">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProyectosModel.spSelCompany_Result">
+          <ScalarProperty Name="IdCompany" ColumnName="IdCompany" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+          <ScalarProperty Name="CompanyLatitud" ColumnName="CompanyLatitud" />
+          <ScalarProperty Name="CompanyLongitud" ColumnName="CompanyLongitud" />
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="CompanyActive" ColumnName="CompanyActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spSelToken" FunctionName="ProyectosModel.Store.spSelToken">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProyectosModel.spSelToken_Result">
+          <ScalarProperty Name="IdToken" ColumnName="IdToken" />
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+          <ScalarProperty Name="PushToken" ColumnName="PushToken" />
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spSelUser" FunctionName="ProyectosModel.Store.spSelUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProyectosModel.spSelUser_Result">
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="NameUser" ColumnName="NameUser" />
+          <ScalarProperty Name="LastNameUser" ColumnName="LastNameUser" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PasswordUser" ColumnName="PasswordUser" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="UserActive" ColumnName="UserActive" />
+          <ScalarProperty Name="Privacity" ColumnName="Privacity" />
+          <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+          <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spUpdCompany" FunctionName="ProyectosModel.Store.spUpdCompany" />
+    <FunctionImportMapping FunctionImportName="spUpdToken" FunctionName="ProyectosModel.Store.spUpdToken" />
+    <FunctionImportMapping FunctionImportName="spUpdUser" FunctionName="ProyectosModel.Store.spUpdUser" />
+    <FunctionImportMapping FunctionImportName="spInsAssignUserCompany" FunctionName="ProyectosModel.Store.spInsAssignUserCompany" />
+    <FunctionImportMapping FunctionImportName="spSelAssignUserCompany" FunctionName="ProyectosModel.Store.spSelAssignUserCompany">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProyectosModel.spSelAssignUserCompany_Result">
+          <ScalarProperty Name="IdAssignUserCompany" ColumnName="IdAssignUserCompany" />
+          <ScalarProperty Name="IdCompany" ColumnName="IdCompany" />
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Datemodified" ColumnName="Datemodified" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spSelAllCompany" FunctionName="ProyectosModel.Store.spSelAllCompany">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProyectosModel.spSelAllCompany_Result">
+          <ScalarProperty Name="IdCompany" ColumnName="IdCompany" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+          <ScalarProperty Name="CompanyLatitud" ColumnName="CompanyLatitud" />
+          <ScalarProperty Name="CompanyLongitud" ColumnName="CompanyLongitud" />
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="CompanyActive" ColumnName="CompanyActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

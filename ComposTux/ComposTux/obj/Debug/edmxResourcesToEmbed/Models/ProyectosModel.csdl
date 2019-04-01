@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProyectosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ProyectosEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="spInsCompany">
+      <Parameter Name="CompanyName" Mode="In" Type="String" />
+      <Parameter Name="CompanyAddress" Mode="In" Type="String" />
+      <Parameter Name="Latitud" Mode="In" Type="String" />
+      <Parameter Name="Longitud" Mode="In" Type="String" />
+      <Parameter Name="IdUser" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="spInserUser">
+      <Parameter Name="PlayerID" Mode="In" Type="String" />
+      <Parameter Name="Pushtoken" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="UserType" Mode="In" Type="Boolean" />
+      <Parameter Name="Privaticy" Mode="In" Type="Boolean" />
+      <Parameter Name="Latitud" Mode="In" Type="String" />
+      <Parameter Name="Longitud" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spSelCompany" ReturnType="Collection(ProyectosModel.spSelCompany_Result)">
+      <Parameter Name="IdUser" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="spSelToken" ReturnType="Collection(ProyectosModel.spSelToken_Result)">
+      <Parameter Name="IdUser" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="spSelUser" ReturnType="Collection(ProyectosModel.spSelUser_Result)">
+      <Parameter Name="NameUser" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spUpdCompany">
+      <Parameter Name="CompanyName" Mode="In" Type="String" />
+      <Parameter Name="CompanyAddress" Mode="In" Type="String" />
+      <Parameter Name="Latitud" Mode="In" Type="String" />
+      <Parameter Name="Longitud" Mode="In" Type="String" />
+      <Parameter Name="IdUser" Mode="In" Type="Guid" />
+      <Parameter Name="companyID" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="spUpdToken">
+      <Parameter Name="IdUser" Mode="In" Type="Guid" />
+      <Parameter Name="PlayerId" Mode="In" Type="String" />
+      <Parameter Name="PushToken" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spUpdUser">
+      <Parameter Name="IdUser" Mode="In" Type="Guid" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="UserType" Mode="In" Type="Boolean" />
+      <Parameter Name="Privaticy" Mode="In" Type="Boolean" />
+      <Parameter Name="Latitud" Mode="In" Type="String" />
+      <Parameter Name="Longitud" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="spSelCompany_Result">
+    <Property Type="Guid" Name="IdCompany" Nullable="false" />
+    <Property Type="String" Name="CompanyName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="CompanyAddress" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CompanyLatitud" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="CompanyLongitud" Nullable="false" MaxLength="100" />
+    <Property Type="Guid" Name="IdUser" Nullable="false" />
+    <Property Type="Boolean" Name="CompanyActive" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spSelToken_Result">
+    <Property Type="Guid" Name="IdToken" Nullable="false" />
+    <Property Type="String" Name="PlayerId" Nullable="false" MaxLength="Max" />
+    <Property Type="String" Name="PushToken" Nullable="false" MaxLength="Max" />
+    <Property Type="Guid" Name="IdUser" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spSelUser_Result">
+    <Property Type="Guid" Name="IdUser" Nullable="false" />
+    <Property Type="String" Name="NameUser" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LastNameUser" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Email1" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="PasswordUser" Nullable="false" MaxLength="100" />
+    <Property Type="Boolean" Name="UserType" Nullable="false" />
+    <Property Type="Boolean" Name="UserActive" Nullable="false" />
+    <Property Type="Boolean" Name="Privacity" Nullable="false" />
+    <Property Type="String" Name="Latitud" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Longitud" Nullable="true" MaxLength="100" />
+  </ComplexType>
+</Schema>
