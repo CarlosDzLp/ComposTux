@@ -28,87 +28,123 @@ namespace ComposTux.Models
         }
     
     
-        public virtual int spInsCompany(string companyName, string companyAddress, string latitud, string longitud, Nullable<System.Guid> idUser)
+        public virtual int spDelAssigmentColony(Nullable<System.Guid> idAssigmentColony)
         {
-            var companyNameParameter = companyName != null ?
-                new ObjectParameter("CompanyName", companyName) :
-                new ObjectParameter("CompanyName", typeof(string));
+            var idAssigmentColonyParameter = idAssigmentColony.HasValue ?
+                new ObjectParameter("IdAssigmentColony", idAssigmentColony) :
+                new ObjectParameter("IdAssigmentColony", typeof(System.Guid));
     
-            var companyAddressParameter = companyAddress != null ?
-                new ObjectParameter("CompanyAddress", companyAddress) :
-                new ObjectParameter("CompanyAddress", typeof(string));
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spDelAssigmentColony", idAssigmentColonyParameter);
+        }
     
-            var latitudParameter = latitud != null ?
-                new ObjectParameter("Latitud", latitud) :
-                new ObjectParameter("Latitud", typeof(string));
+        public virtual int spDelInformationCartel(Nullable<System.Guid> idInofrmation)
+        {
+            var idInofrmationParameter = idInofrmation.HasValue ?
+                new ObjectParameter("IdInofrmation", idInofrmation) :
+                new ObjectParameter("IdInofrmation", typeof(System.Guid));
     
-            var longitudParameter = longitud != null ?
-                new ObjectParameter("Longitud", longitud) :
-                new ObjectParameter("Longitud", typeof(string));
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spDelInformationCartel", idInofrmationParameter);
+        }
+    
+        public virtual int spDelToken(Nullable<System.Guid> idUser)
+        {
+            var idUserParameter = idUser.HasValue ?
+                new ObjectParameter("IdUser", idUser) :
+                new ObjectParameter("IdUser", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spDelToken", idUserParameter);
+        }
+    
+        public virtual int spDelUser(Nullable<System.Guid> idUser)
+        {
+            var idUserParameter = idUser.HasValue ?
+                new ObjectParameter("IdUser", idUser) :
+                new ObjectParameter("IdUser", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spDelUser", idUserParameter);
+        }
+    
+        public virtual int spInsAssigmentColony(Nullable<System.Guid> idColony, Nullable<System.Guid> idUser)
+        {
+            var idColonyParameter = idColony.HasValue ?
+                new ObjectParameter("IdColony", idColony) :
+                new ObjectParameter("IdColony", typeof(System.Guid));
     
             var idUserParameter = idUser.HasValue ?
                 new ObjectParameter("IdUser", idUser) :
                 new ObjectParameter("IdUser", typeof(System.Guid));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spInsCompany", companyNameParameter, companyAddressParameter, latitudParameter, longitudParameter, idUserParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spInsAssigmentColony", idColonyParameter, idUserParameter);
         }
     
-        public virtual int spInserUser(string playerID, string pushtoken, string userName, string lastName, string name, string email, string password, Nullable<bool> userType, Nullable<bool> privaticy, string latitud, string longitud)
+        public virtual int spInsColony(string name, string address, Nullable<System.Guid> idProject)
         {
-            var playerIDParameter = playerID != null ?
-                new ObjectParameter("PlayerID", playerID) :
-                new ObjectParameter("PlayerID", typeof(string));
-    
-            var pushtokenParameter = pushtoken != null ?
-                new ObjectParameter("Pushtoken", pushtoken) :
-                new ObjectParameter("Pushtoken", typeof(string));
-    
-            var userNameParameter = userName != null ?
-                new ObjectParameter("UserName", userName) :
-                new ObjectParameter("UserName", typeof(string));
-    
-            var lastNameParameter = lastName != null ?
-                new ObjectParameter("LastName", lastName) :
-                new ObjectParameter("LastName", typeof(string));
-    
             var nameParameter = name != null ?
                 new ObjectParameter("Name", name) :
                 new ObjectParameter("Name", typeof(string));
     
-            var emailParameter = email != null ?
-                new ObjectParameter("Email", email) :
-                new ObjectParameter("Email", typeof(string));
+            var addressParameter = address != null ?
+                new ObjectParameter("Address", address) :
+                new ObjectParameter("Address", typeof(string));
     
-            var passwordParameter = password != null ?
-                new ObjectParameter("Password", password) :
-                new ObjectParameter("Password", typeof(string));
+            var idProjectParameter = idProject.HasValue ?
+                new ObjectParameter("IdProject", idProject) :
+                new ObjectParameter("IdProject", typeof(System.Guid));
     
-            var userTypeParameter = userType.HasValue ?
-                new ObjectParameter("UserType", userType) :
-                new ObjectParameter("UserType", typeof(bool));
-    
-            var privaticyParameter = privaticy.HasValue ?
-                new ObjectParameter("Privaticy", privaticy) :
-                new ObjectParameter("Privaticy", typeof(bool));
-    
-            var latitudParameter = latitud != null ?
-                new ObjectParameter("Latitud", latitud) :
-                new ObjectParameter("Latitud", typeof(string));
-    
-            var longitudParameter = longitud != null ?
-                new ObjectParameter("Longitud", longitud) :
-                new ObjectParameter("Longitud", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spInserUser", playerIDParameter, pushtokenParameter, userNameParameter, lastNameParameter, nameParameter, emailParameter, passwordParameter, userTypeParameter, privaticyParameter, latitudParameter, longitudParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spInsColony", nameParameter, addressParameter, idProjectParameter);
         }
     
-        public virtual ObjectResult<spSelCompany_Result> spSelCompany(Nullable<System.Guid> idUser)
+        public virtual int spInsInformationCartel(Nullable<System.Guid> idUser, string urlImage, string description)
         {
             var idUserParameter = idUser.HasValue ?
                 new ObjectParameter("IdUser", idUser) :
                 new ObjectParameter("IdUser", typeof(System.Guid));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spSelCompany_Result>("spSelCompany", idUserParameter);
+            var urlImageParameter = urlImage != null ?
+                new ObjectParameter("UrlImage", urlImage) :
+                new ObjectParameter("UrlImage", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spInsInformationCartel", idUserParameter, urlImageParameter, descriptionParameter);
+        }
+    
+        public virtual int spInsProject(string name, string responsable)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var responsableParameter = responsable != null ?
+                new ObjectParameter("Responsable", responsable) :
+                new ObjectParameter("Responsable", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spInsProject", nameParameter, responsableParameter);
+        }
+    
+        public virtual ObjectResult<spSelAllInformationCartel_Result> spSelAllInformationCartel()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spSelAllInformationCartel_Result>("spSelAllInformationCartel");
+        }
+    
+        public virtual ObjectResult<spSelAssigmentColony_Result> spSelAssigmentColony(Nullable<System.Guid> idUser)
+        {
+            var idUserParameter = idUser.HasValue ?
+                new ObjectParameter("IdUser", idUser) :
+                new ObjectParameter("IdUser", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spSelAssigmentColony_Result>("spSelAssigmentColony", idUserParameter);
+        }
+    
+        public virtual ObjectResult<spSelInformationCartel_Result> spSelInformationCartel(Nullable<System.Guid> idUser)
+        {
+            var idUserParameter = idUser.HasValue ?
+                new ObjectParameter("IdUser", idUser) :
+                new ObjectParameter("IdUser", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spSelInformationCartel_Result>("spSelInformationCartel", idUserParameter);
         }
     
         public virtual ObjectResult<spSelToken_Result> spSelToken(Nullable<System.Guid> idUser)
@@ -133,33 +169,38 @@ namespace ComposTux.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spSelUser_Result>("spSelUser", nameUserParameter, passwordParameter);
         }
     
-        public virtual int spUpdCompany(string companyName, string companyAddress, string latitud, string longitud, Nullable<System.Guid> idUser, Nullable<System.Guid> companyID)
+        public virtual int spUpdAssigmentColony(Nullable<System.Guid> idAssigmentColony, Nullable<System.Guid> idColony, Nullable<System.Guid> idUser)
         {
-            var companyNameParameter = companyName != null ?
-                new ObjectParameter("CompanyName", companyName) :
-                new ObjectParameter("CompanyName", typeof(string));
+            var idAssigmentColonyParameter = idAssigmentColony.HasValue ?
+                new ObjectParameter("IdAssigmentColony", idAssigmentColony) :
+                new ObjectParameter("IdAssigmentColony", typeof(System.Guid));
     
-            var companyAddressParameter = companyAddress != null ?
-                new ObjectParameter("CompanyAddress", companyAddress) :
-                new ObjectParameter("CompanyAddress", typeof(string));
-    
-            var latitudParameter = latitud != null ?
-                new ObjectParameter("Latitud", latitud) :
-                new ObjectParameter("Latitud", typeof(string));
-    
-            var longitudParameter = longitud != null ?
-                new ObjectParameter("Longitud", longitud) :
-                new ObjectParameter("Longitud", typeof(string));
+            var idColonyParameter = idColony.HasValue ?
+                new ObjectParameter("IdColony", idColony) :
+                new ObjectParameter("IdColony", typeof(System.Guid));
     
             var idUserParameter = idUser.HasValue ?
                 new ObjectParameter("IdUser", idUser) :
                 new ObjectParameter("IdUser", typeof(System.Guid));
     
-            var companyIDParameter = companyID.HasValue ?
-                new ObjectParameter("companyID", companyID) :
-                new ObjectParameter("companyID", typeof(System.Guid));
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpdAssigmentColony", idAssigmentColonyParameter, idColonyParameter, idUserParameter);
+        }
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpdCompany", companyNameParameter, companyAddressParameter, latitudParameter, longitudParameter, idUserParameter, companyIDParameter);
+        public virtual int spUpdInformationCartel(Nullable<System.Guid> idInformationCartel, string urlImage, string description)
+        {
+            var idInformationCartelParameter = idInformationCartel.HasValue ?
+                new ObjectParameter("IdInformationCartel", idInformationCartel) :
+                new ObjectParameter("IdInformationCartel", typeof(System.Guid));
+    
+            var urlImageParameter = urlImage != null ?
+                new ObjectParameter("UrlImage", urlImage) :
+                new ObjectParameter("UrlImage", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpdInformationCartel", idInformationCartelParameter, urlImageParameter, descriptionParameter);
         }
     
         public virtual int spUpdToken(Nullable<System.Guid> idUser, string playerId, string pushToken)
@@ -179,39 +220,31 @@ namespace ComposTux.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpdToken", idUserParameter, playerIdParameter, pushTokenParameter);
         }
     
-        public virtual int spUpdUser(Nullable<System.Guid> idUser, string userName, string lastName, string name, string email, string password, Nullable<bool> userType, Nullable<bool> privaticy, string latitud, string longitud)
+        public virtual int spUpdUser(Nullable<System.Guid> idUser, string nameUser, string lastNameUser, string userName, string email, string passwordUser, string latitud, string longitud)
         {
             var idUserParameter = idUser.HasValue ?
                 new ObjectParameter("IdUser", idUser) :
                 new ObjectParameter("IdUser", typeof(System.Guid));
     
+            var nameUserParameter = nameUser != null ?
+                new ObjectParameter("NameUser", nameUser) :
+                new ObjectParameter("NameUser", typeof(string));
+    
+            var lastNameUserParameter = lastNameUser != null ?
+                new ObjectParameter("LastNameUser", lastNameUser) :
+                new ObjectParameter("LastNameUser", typeof(string));
+    
             var userNameParameter = userName != null ?
                 new ObjectParameter("UserName", userName) :
                 new ObjectParameter("UserName", typeof(string));
-    
-            var lastNameParameter = lastName != null ?
-                new ObjectParameter("LastName", lastName) :
-                new ObjectParameter("LastName", typeof(string));
-    
-            var nameParameter = name != null ?
-                new ObjectParameter("Name", name) :
-                new ObjectParameter("Name", typeof(string));
     
             var emailParameter = email != null ?
                 new ObjectParameter("Email", email) :
                 new ObjectParameter("Email", typeof(string));
     
-            var passwordParameter = password != null ?
-                new ObjectParameter("Password", password) :
-                new ObjectParameter("Password", typeof(string));
-    
-            var userTypeParameter = userType.HasValue ?
-                new ObjectParameter("UserType", userType) :
-                new ObjectParameter("UserType", typeof(bool));
-    
-            var privaticyParameter = privaticy.HasValue ?
-                new ObjectParameter("Privaticy", privaticy) :
-                new ObjectParameter("Privaticy", typeof(bool));
+            var passwordUserParameter = passwordUser != null ?
+                new ObjectParameter("PasswordUser", passwordUser) :
+                new ObjectParameter("PasswordUser", typeof(string));
     
             var latitudParameter = latitud != null ?
                 new ObjectParameter("Latitud", latitud) :
@@ -221,34 +254,53 @@ namespace ComposTux.Models
                 new ObjectParameter("Longitud", longitud) :
                 new ObjectParameter("Longitud", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpdUser", idUserParameter, userNameParameter, lastNameParameter, nameParameter, emailParameter, passwordParameter, userTypeParameter, privaticyParameter, latitudParameter, longitudParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpdUser", idUserParameter, nameUserParameter, lastNameUserParameter, userNameParameter, emailParameter, passwordUserParameter, latitudParameter, longitudParameter);
         }
     
-        public virtual int spInsAssignUserCompany(Nullable<System.Guid> idcompany, Nullable<System.Guid> iduser)
+        public virtual int spInsUser(string name, string lastName, string userName, string email, string password, string latitud, string longitud, string playerId, string puskToken)
         {
-            var idcompanyParameter = idcompany.HasValue ?
-                new ObjectParameter("Idcompany", idcompany) :
-                new ObjectParameter("Idcompany", typeof(System.Guid));
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
     
-            var iduserParameter = iduser.HasValue ?
-                new ObjectParameter("Iduser", iduser) :
-                new ObjectParameter("Iduser", typeof(System.Guid));
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spInsAssignUserCompany", idcompanyParameter, iduserParameter);
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            var latitudParameter = latitud != null ?
+                new ObjectParameter("Latitud", latitud) :
+                new ObjectParameter("Latitud", typeof(string));
+    
+            var longitudParameter = longitud != null ?
+                new ObjectParameter("Longitud", longitud) :
+                new ObjectParameter("Longitud", typeof(string));
+    
+            var playerIdParameter = playerId != null ?
+                new ObjectParameter("playerId", playerId) :
+                new ObjectParameter("playerId", typeof(string));
+    
+            var puskTokenParameter = puskToken != null ?
+                new ObjectParameter("puskToken", puskToken) :
+                new ObjectParameter("puskToken", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spInsUser", nameParameter, lastNameParameter, userNameParameter, emailParameter, passwordParameter, latitudParameter, longitudParameter, playerIdParameter, puskTokenParameter);
         }
     
-        public virtual ObjectResult<spSelAssignUserCompany_Result> spSelAssignUserCompany(Nullable<System.Guid> iduser)
+        public virtual ObjectResult<spSelAllColony_Result> spSelAllColony()
         {
-            var iduserParameter = iduser.HasValue ?
-                new ObjectParameter("Iduser", iduser) :
-                new ObjectParameter("Iduser", typeof(System.Guid));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spSelAssignUserCompany_Result>("spSelAssignUserCompany", iduserParameter);
-        }
-    
-        public virtual ObjectResult<spSelAllCompany_Result> spSelAllCompany()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spSelAllCompany_Result>("spSelAllCompany");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spSelAllColony_Result>("spSelAllColony");
         }
     }
 }

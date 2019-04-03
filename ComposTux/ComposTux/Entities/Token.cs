@@ -22,6 +22,8 @@ namespace ComposTux.Entities
 
         public Guid IdUser { get; set; }
 
+        public bool TokenActive { get; set; }
+
         public virtual User User { get; set; }
     }
 }

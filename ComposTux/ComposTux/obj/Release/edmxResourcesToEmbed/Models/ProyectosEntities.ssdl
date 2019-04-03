@@ -1,34 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="ProyectosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <Function Name="spInsAssignUserCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="Idcompany" Type="uniqueidentifier" Mode="In" />
-    <Parameter Name="Iduser" Type="uniqueidentifier" Mode="In" />
+  <Function Name="spDelAssigmentColony" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdAssigmentColony" Type="uniqueidentifier" Mode="In" />
   </Function>
-  <Function Name="spInsCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="CompanyName" Type="varchar" Mode="In" />
-    <Parameter Name="CompanyAddress" Type="varchar" Mode="In" />
-    <Parameter Name="Latitud" Type="varchar" Mode="In" />
-    <Parameter Name="Longitud" Type="varchar" Mode="In" />
+  <Function Name="spDelInformationCartel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdInofrmation" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="spDelToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="IdUser" Type="uniqueidentifier" Mode="In" />
   </Function>
-  <Function Name="spInserUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="PlayerID" Type="text" Mode="In" />
-    <Parameter Name="Pushtoken" Type="text" Mode="In" />
-    <Parameter Name="UserName" Type="varchar" Mode="In" />
-    <Parameter Name="LastName" Type="varchar" Mode="In" />
+  <Function Name="spDelUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdUser" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="spInsAssigmentColony" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdColony" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="IdUser" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="spInsColony" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Name" Type="varchar" Mode="In" />
+    <Parameter Name="Address" Type="varchar" Mode="In" />
+    <Parameter Name="IdProject" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="spInsInformationCartel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdUser" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="UrlImage" Type="text" Mode="In" />
+    <Parameter Name="Description" Type="text" Mode="In" />
+  </Function>
+  <Function Name="spInsProject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="varchar" Mode="In" />
+    <Parameter Name="Responsable" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="spInsUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="varchar" Mode="In" />
+    <Parameter Name="LastName" Type="varchar" Mode="In" />
+    <Parameter Name="UserName" Type="varchar" Mode="In" />
     <Parameter Name="Email" Type="varchar" Mode="In" />
     <Parameter Name="Password" Type="varchar" Mode="In" />
-    <Parameter Name="UserType" Type="bit" Mode="In" />
-    <Parameter Name="Privaticy" Type="bit" Mode="In" />
     <Parameter Name="Latitud" Type="varchar" Mode="In" />
     <Parameter Name="Longitud" Type="varchar" Mode="In" />
+    <Parameter Name="playerId" Type="text" Mode="In" />
+    <Parameter Name="puskToken" Type="text" Mode="In" />
   </Function>
-  <Function Name="spSelAllCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <Function Name="spSelAssignUserCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="Iduser" Type="uniqueidentifier" Mode="In" />
+  <Function Name="spSelAllColony" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spSelAllInformationCartel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spSelAssigmentColony" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdUser" Type="uniqueidentifier" Mode="In" />
   </Function>
-  <Function Name="spSelCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+  <Function Name="spSelInformationCartel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="IdUser" Type="uniqueidentifier" Mode="In" />
   </Function>
   <Function Name="spSelToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -38,13 +56,15 @@
     <Parameter Name="NameUser" Type="varchar" Mode="In" />
     <Parameter Name="Password" Type="varchar" Mode="In" />
   </Function>
-  <Function Name="spUpdCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="CompanyName" Type="varchar" Mode="In" />
-    <Parameter Name="CompanyAddress" Type="varchar" Mode="In" />
-    <Parameter Name="Latitud" Type="varchar" Mode="In" />
-    <Parameter Name="Longitud" Type="varchar" Mode="In" />
+  <Function Name="spUpdAssigmentColony" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdAssigmentColony" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="IdColony" Type="uniqueidentifier" Mode="In" />
     <Parameter Name="IdUser" Type="uniqueidentifier" Mode="In" />
-    <Parameter Name="companyID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="spUpdInformationCartel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdInformationCartel" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="UrlImage" Type="text" Mode="In" />
+    <Parameter Name="Description" Type="text" Mode="In" />
   </Function>
   <Function Name="spUpdToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="IdUser" Type="uniqueidentifier" Mode="In" />
@@ -53,13 +73,11 @@
   </Function>
   <Function Name="spUpdUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="IdUser" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="NameUser" Type="varchar" Mode="In" />
+    <Parameter Name="LastNameUser" Type="varchar" Mode="In" />
     <Parameter Name="UserName" Type="varchar" Mode="In" />
-    <Parameter Name="LastName" Type="varchar" Mode="In" />
-    <Parameter Name="Name" Type="varchar" Mode="In" />
     <Parameter Name="Email" Type="varchar" Mode="In" />
-    <Parameter Name="Password" Type="varchar" Mode="In" />
-    <Parameter Name="UserType" Type="bit" Mode="In" />
-    <Parameter Name="Privaticy" Type="bit" Mode="In" />
+    <Parameter Name="PasswordUser" Type="varchar" Mode="In" />
     <Parameter Name="Latitud" Type="varchar" Mode="In" />
     <Parameter Name="Longitud" Type="varchar" Mode="In" />
   </Function>

@@ -61,5 +61,27 @@ namespace ComposTux.BussinesLayer
                 return null;
             }
         }
+        public async Task<bool>DeleteToken(Guid IdUser)
+        {
+            try
+            {
+                using (var db = new ProyectosEntities())
+                {
+                    var response = db.spDelToken(IdUser);
+                    if(response==-1)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

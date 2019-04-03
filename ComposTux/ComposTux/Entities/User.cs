@@ -11,8 +11,8 @@ namespace ComposTux.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            AssignUserCompanies = new HashSet<AssignUserCompany>();
-            Companies = new HashSet<Company>();
+            AssigmentColonies = new HashSet<AssigmentColony>();
+            InformationCartels = new HashSet<InformationCartel>();
             Tokens = new HashSet<Token>();
         }
 
@@ -52,10 +52,10 @@ namespace ComposTux.Entities
         public string Longitud { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AssignUserCompany> AssignUserCompanies { get; set; }
+        public virtual ICollection<AssigmentColony> AssigmentColonies { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Company> Companies { get; set; }
+        public virtual ICollection<InformationCartel> InformationCartels { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Token> Tokens { get; set; }

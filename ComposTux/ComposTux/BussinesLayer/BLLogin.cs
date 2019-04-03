@@ -11,55 +11,56 @@ namespace ComposTux.BussinesLayer
 {
     public class BLLogin
     {
-        public async Task<BaseResult<User>> DoLogin(string userName,string password)
+        public async Task<BaseResult<User>>GetUser(string UserName,string Password)
         {
             try
             {
-                BaseResult<User> userResult = new BaseResult<User>();
+                BaseResult<User> result = new BaseResult<User>();
                 User user = new User();
                 using (var db = new ProyectosEntities())
                 {
-                    var response = db.spSelUser(userName, password).FirstOrDefault();
-                    if(response != null)
+                    var response = db.spSelUser(UserName, Password).FirstOrDefault();
+                    if (response != null)
                     {
                         user.IdUser = response.IdUser;
-                        user.LastNameUser = response.LastNameUser;
-                        user.Latitud = response.Latitud;
-                        user.Longitud = response.Longitud;
-                        user.NameUser = response.NameUser;
-                        user.PasswordUser = response.PasswordUser;
-                        user.Privacity = response.Privacity;
-                        user.UserActive = response.UserActive;
-                        user.UserName = response.UserName;
-                        user.UserType = response.UserType;
+                        user.LastNameUser=response.LastNameUser;
+                        user.Latitud=response.Latitud;
+                        user.Longitud=response.Longitud;
+                        user.NameUser=response.NameUser;
+                        user.PasswordUser=response.PasswordUser;
+                        user.Privacity=response.Privacity;
+                        user.UserActive=response.UserActive;
+                        user.UserName=response.UserName;
+                        user.UserType=response.UserType;
                         user.Email = response.Email;
-                        userResult.Result = user;
-                        userResult.Message = "";
-                        userResult.Count = 1;
+
+                        result.Count = 1;
+                        result.Message = "";
+                        result.Result = user;
                     }
                     else
                     {
-                        userResult.Result = null;
-                        userResult.Message = "Usuario no encontrado";
-                        userResult.Count = 0;
+                        result.Count = 0;
+                        result.Message = "Usuario no encontrado";
+                        result.Result = null;
                     }
                 }
-                return userResult;
+                return result;
             }
             catch(Exception ex)
             {
-                Console.Write(ex.Message);
-                return null;
+                throw;
             }
         }
-        public async Task<bool> InsertUser(UserViewModel user)
+
+        public async Task<bool>InsertUser(UserViewModel user)
         {
             try
             {
                 using (var db = new ProyectosEntities())
                 {
-                    var response = db.spInserUser(user.playerId,user.pushToken, user.UserName, user.LastNameUser, user.NameUser, user.Email, user.PasswordUser, user.UserType, user.Privacity, user.Latitud, user.Longitud);
-                    if (response == -1)
+                    var response = db.spInsUser(user.NameUser, user.LastNameUser, user.UserName, user.Email, user.PasswordUser, user.Latitud, user.Longitud, user.playerId, user.pushToken);
+                    if(response==-1)
                     {
                         return true;
                     }
@@ -71,18 +72,18 @@ namespace ComposTux.BussinesLayer
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return false;
             }
         }
-        public async Task<bool> UpdateUser(UserViewModel user)
+
+        public async Task<bool>Update(User user)
         {
             try
             {
                 using (var db = new ProyectosEntities())
                 {
-                    var response = db.spUpdUser(user.IdUser, user.UserName, user.LastNameUser, user.NameUser, user.Email, user.PasswordUser, user.UserType, user.Privacity, user.Latitud, user.Longitud);
-                    if (response == -1)
+                    var response = db.spUpdUser(user.IdUser, user.NameUser, user.LastNameUser, user.UserName, user.Email, user.PasswordUser, user.Latitud, user.Longitud);
+                    if(response==-1)
                     {
                         return true;
                     }
@@ -92,9 +93,31 @@ namespace ComposTux.BussinesLayer
                     }
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+        public async Task<bool> DeleteUser(Guid IdUser)
+        {
+            try
+            {
+                using (var db = new ProyectosEntities())
+                {
+                    var response = db.spDelUser(IdUser);
+                    if(response==-1)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
                 return false;
             }
         }

@@ -180,24 +180,26 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="BussinesLayer\BLAssingment.cs" />
-    <Compile Include="BussinesLayer\BLCompany.cs" />
+    <Compile Include="BussinesLayer\BLAssigmentColony.cs" />
+    <Compile Include="BussinesLayer\BLInformationCartel.cs" />
     <Compile Include="BussinesLayer\BLLogin.cs" />
     <Compile Include="BussinesLayer\BLToken.cs" />
-    <Compile Include="Controllers\AssignmentController.cs" />
-    <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\AssigmentColonyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InformationCartelController.cs" />
     <Compile Include="Controllers\TokenController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="Entities\AssignUserCompany.cs" />
-    <Compile Include="Entities\Company.cs" />
-    <Compile Include="Entities\ProyectosM.cs" />
+    <Compile Include="Entities\AssigmentColony.cs" />
+    <Compile Include="Entities\Colony.cs" />
+    <Compile Include="Entities\InformationCartel.cs" />
+    <Compile Include="Entities\Project.cs" />
+    <Compile Include="Entities\ProyectosModel.cs" />
     <Compile Include="Entities\Token.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\UploadImage.cs" />
     <Compile Include="Models\ProyectosEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -213,13 +215,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ProyectosEntities.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\spSelAllCompany_Result.cs">
+    <Compile Include="Models\spSelAllColony_Result.cs">
       <DependentUpon>ProyectosEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\spSelAssignUserCompany_Result.cs">
+    <Compile Include="Models\spSelAllInformationCartel_Result.cs">
       <DependentUpon>ProyectosEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\spSelCompany_Result.cs">
+    <Compile Include="Models\spSelAssigmentColony_Result.cs">
+      <DependentUpon>ProyectosEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spSelInformationCartel_Result.cs">
       <DependentUpon>ProyectosEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\spSelToken_Result.cs">
@@ -232,6 +237,7 @@
     <Compile Include="Secutiry\TokenGenerator.cs" />
     <Compile Include="Secutiry\TokenValidationHandler.cs" />
     <Compile Include="ViewModels\BaseResult.cs" />
+    <Compile Include="ViewModels\InformationCartelViewModel.cs" />
     <Compile Include="ViewModels\TokenRequest.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
@@ -244,6 +250,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Image\unnamed.jpg" />
     <Content Include="Models\ProyectosEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ProyectosEntities.edmx</DependentUpon>
@@ -284,6 +291,7 @@
     </Content>
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile2.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

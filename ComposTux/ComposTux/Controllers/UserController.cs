@@ -1,43 +1,46 @@
 ﻿using ComposTux.BussinesLayer;
+using ComposTux.Entities;
 using ComposTux.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace ComposTux.Controllers
 {
     [Authorize]
-    [RoutePrefix("api/user")]
+    [RoutePrefix("api/User")]
     public class UserController : ApiController
     {
         BLLogin login = new BLLogin();
         [HttpPost]
         [Route("insertuser")]
-        public IHttpActionResult InsertUser(UserViewModel user)
+        public IHttpActionResult InsertUser([FromBody] UserViewModel user)
         {
             var response = login.InsertUser(user).Result;
             return Ok(response);
         }
 
-
         [HttpPut]
         [Route("updateuser")]
-        public IHttpActionResult UpdateUser(UserViewModel user)
+        public IHttpActionResult UpdateUser([FromBody] User user)
         {
-            var isValid = login.UpdateUser(user).Result;
-            return Ok(isValid);
+            var response = login.Update(user).Result;
+            return Ok(response);
         }
 
+        [HttpDelete]
+        [Route("deleteuser")]
+        public IHttpActionResult DeleteUser([FromUri] Guid IdUser)
+        {
+            var response = login.DeleteUser(IdUser).Result;
+            return Ok(response);
+        }
 
         [HttpGet]
         [Route("selectuser")]
-        public IHttpActionResult SelectUser(string UserName,string Password)
+        public IHttpActionResult GetUser(string UserName,string Password)
         {
-            var isValid = login.DoLogin(UserName, Password).Result;
-            return Ok(isValid);
+            var response = login.GetUser(UserName, Password).Result;
+            return Ok(response);
         }
     }
 }

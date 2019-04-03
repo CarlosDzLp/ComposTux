@@ -1,18 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="ProyectosModelStoreContainer" CdmEntityContainer="ProyectosEntities">
-    <FunctionImportMapping FunctionImportName="spInsCompany" FunctionName="ProyectosModel.Store.spInsCompany" />
-    <FunctionImportMapping FunctionImportName="spInserUser" FunctionName="ProyectosModel.Store.spInserUser" />
-    <FunctionImportMapping FunctionImportName="spSelCompany" FunctionName="ProyectosModel.Store.spSelCompany">
+    <FunctionImportMapping FunctionImportName="spDelAssigmentColony" FunctionName="ProyectosModel.Store.spDelAssigmentColony" />
+    <FunctionImportMapping FunctionImportName="spDelInformationCartel" FunctionName="ProyectosModel.Store.spDelInformationCartel" />
+    <FunctionImportMapping FunctionImportName="spDelToken" FunctionName="ProyectosModel.Store.spDelToken" />
+    <FunctionImportMapping FunctionImportName="spDelUser" FunctionName="ProyectosModel.Store.spDelUser" />
+    <FunctionImportMapping FunctionImportName="spInsAssigmentColony" FunctionName="ProyectosModel.Store.spInsAssigmentColony" />
+    <FunctionImportMapping FunctionImportName="spInsColony" FunctionName="ProyectosModel.Store.spInsColony" />
+    <FunctionImportMapping FunctionImportName="spInsInformationCartel" FunctionName="ProyectosModel.Store.spInsInformationCartel" />
+    <FunctionImportMapping FunctionImportName="spInsProject" FunctionName="ProyectosModel.Store.spInsProject" />
+    <FunctionImportMapping FunctionImportName="spSelAllInformationCartel" FunctionName="ProyectosModel.Store.spSelAllInformationCartel">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="ProyectosModel.spSelCompany_Result">
-          <ScalarProperty Name="IdCompany" ColumnName="IdCompany" />
-          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-          <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
-          <ScalarProperty Name="CompanyLatitud" ColumnName="CompanyLatitud" />
-          <ScalarProperty Name="CompanyLongitud" ColumnName="CompanyLongitud" />
+        <ComplexTypeMapping TypeName="ProyectosModel.spSelAllInformationCartel_Result">
+          <ScalarProperty Name="IdInformationCartel" ColumnName="IdInformationCartel" />
           <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-          <ScalarProperty Name="CompanyActive" ColumnName="CompanyActive" />
+          <ScalarProperty Name="UrlImage" ColumnName="UrlImage" />
+          <ScalarProperty Name="CartelDescription" ColumnName="CartelDescription" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spSelAssigmentColony" FunctionName="ProyectosModel.Store.spSelAssigmentColony">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProyectosModel.spSelAssigmentColony_Result">
+          <ScalarProperty Name="IdAssigmentColony" ColumnName="IdAssigmentColony" />
+          <ScalarProperty Name="IdColony" ColumnName="IdColony" />
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spSelInformationCartel" FunctionName="ProyectosModel.Store.spSelInformationCartel">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProyectosModel.spSelInformationCartel_Result">
+          <ScalarProperty Name="IdInformationCartel" ColumnName="IdInformationCartel" />
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="UrlImage" ColumnName="UrlImage" />
+          <ScalarProperty Name="CartelDescription" ColumnName="CartelDescription" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -43,31 +71,20 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="spUpdCompany" FunctionName="ProyectosModel.Store.spUpdCompany" />
+    <FunctionImportMapping FunctionImportName="spUpdAssigmentColony" FunctionName="ProyectosModel.Store.spUpdAssigmentColony" />
+    <FunctionImportMapping FunctionImportName="spUpdInformationCartel" FunctionName="ProyectosModel.Store.spUpdInformationCartel" />
     <FunctionImportMapping FunctionImportName="spUpdToken" FunctionName="ProyectosModel.Store.spUpdToken" />
     <FunctionImportMapping FunctionImportName="spUpdUser" FunctionName="ProyectosModel.Store.spUpdUser" />
-    <FunctionImportMapping FunctionImportName="spInsAssignUserCompany" FunctionName="ProyectosModel.Store.spInsAssignUserCompany" />
-    <FunctionImportMapping FunctionImportName="spSelAssignUserCompany" FunctionName="ProyectosModel.Store.spSelAssignUserCompany">
+    <FunctionImportMapping FunctionImportName="spInsUser" FunctionName="ProyectosModel.Store.spInsUser" />
+    <FunctionImportMapping FunctionImportName="spSelAllColony" FunctionName="ProyectosModel.Store.spSelAllColony">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="ProyectosModel.spSelAssignUserCompany_Result">
-          <ScalarProperty Name="IdAssignUserCompany" ColumnName="IdAssignUserCompany" />
-          <ScalarProperty Name="IdCompany" ColumnName="IdCompany" />
-          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+        <ComplexTypeMapping TypeName="ProyectosModel.spSelAllColony_Result">
+          <ScalarProperty Name="IdColony" ColumnName="IdColony" />
+          <ScalarProperty Name="ColonyName" ColumnName="ColonyName" />
+          <ScalarProperty Name="ColonyAddress" ColumnName="ColonyAddress" />
+          <ScalarProperty Name="IdProject" ColumnName="IdProject" />
           <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-          <ScalarProperty Name="Datemodified" ColumnName="Datemodified" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="spSelAllCompany" FunctionName="ProyectosModel.Store.spSelAllCompany">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="ProyectosModel.spSelAllCompany_Result">
-          <ScalarProperty Name="IdCompany" ColumnName="IdCompany" />
-          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-          <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
-          <ScalarProperty Name="CompanyLatitud" ColumnName="CompanyLatitud" />
-          <ScalarProperty Name="CompanyLongitud" ColumnName="CompanyLongitud" />
-          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-          <ScalarProperty Name="CompanyActive" ColumnName="CompanyActive" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

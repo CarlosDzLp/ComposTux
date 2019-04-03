@@ -1,27 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="ProyectosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="ProyectosEntities" annotation:LazyLoadingEnabled="true">
-    <FunctionImport Name="spInsCompany">
-      <Parameter Name="CompanyName" Mode="In" Type="String" />
-      <Parameter Name="CompanyAddress" Mode="In" Type="String" />
-      <Parameter Name="Latitud" Mode="In" Type="String" />
-      <Parameter Name="Longitud" Mode="In" Type="String" />
+    <FunctionImport Name="spDelAssigmentColony">
+      <Parameter Name="IdAssigmentColony" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="spDelInformationCartel">
+      <Parameter Name="IdInofrmation" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="spDelToken">
       <Parameter Name="IdUser" Mode="In" Type="Guid" />
     </FunctionImport>
-    <FunctionImport Name="spInserUser">
-      <Parameter Name="PlayerID" Mode="In" Type="String" />
-      <Parameter Name="Pushtoken" Mode="In" Type="String" />
-      <Parameter Name="UserName" Mode="In" Type="String" />
-      <Parameter Name="LastName" Mode="In" Type="String" />
-      <Parameter Name="Name" Mode="In" Type="String" />
-      <Parameter Name="Email" Mode="In" Type="String" />
-      <Parameter Name="Password" Mode="In" Type="String" />
-      <Parameter Name="UserType" Mode="In" Type="Boolean" />
-      <Parameter Name="Privaticy" Mode="In" Type="Boolean" />
-      <Parameter Name="Latitud" Mode="In" Type="String" />
-      <Parameter Name="Longitud" Mode="In" Type="String" />
+    <FunctionImport Name="spDelUser">
+      <Parameter Name="IdUser" Mode="In" Type="Guid" />
     </FunctionImport>
-    <FunctionImport Name="spSelCompany" ReturnType="Collection(ProyectosModel.spSelCompany_Result)">
+    <FunctionImport Name="spInsAssigmentColony">
+      <Parameter Name="IdColony" Mode="In" Type="Guid" />
+      <Parameter Name="IdUser" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="spInsColony">
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="IdProject" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="spInsInformationCartel">
+      <Parameter Name="IdUser" Mode="In" Type="Guid" />
+      <Parameter Name="UrlImage" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spInsProject">
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Responsable" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spSelAllInformationCartel" ReturnType="Collection(ProyectosModel.spSelAllInformationCartel_Result)" />
+    <FunctionImport Name="spSelAssigmentColony" ReturnType="Collection(ProyectosModel.spSelAssigmentColony_Result)">
+      <Parameter Name="IdUser" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="spSelInformationCartel" ReturnType="Collection(ProyectosModel.spSelInformationCartel_Result)">
       <Parameter Name="IdUser" Mode="In" Type="Guid" />
     </FunctionImport>
     <FunctionImport Name="spSelToken" ReturnType="Collection(ProyectosModel.spSelToken_Result)">
@@ -31,13 +45,15 @@
       <Parameter Name="NameUser" Mode="In" Type="String" />
       <Parameter Name="Password" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="spUpdCompany">
-      <Parameter Name="CompanyName" Mode="In" Type="String" />
-      <Parameter Name="CompanyAddress" Mode="In" Type="String" />
-      <Parameter Name="Latitud" Mode="In" Type="String" />
-      <Parameter Name="Longitud" Mode="In" Type="String" />
+    <FunctionImport Name="spUpdAssigmentColony">
+      <Parameter Name="IdAssigmentColony" Mode="In" Type="Guid" />
+      <Parameter Name="IdColony" Mode="In" Type="Guid" />
       <Parameter Name="IdUser" Mode="In" Type="Guid" />
-      <Parameter Name="companyID" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="spUpdInformationCartel">
+      <Parameter Name="IdInformationCartel" Mode="In" Type="Guid" />
+      <Parameter Name="UrlImage" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="spUpdToken">
       <Parameter Name="IdUser" Mode="In" Type="Guid" />
@@ -46,33 +62,49 @@
     </FunctionImport>
     <FunctionImport Name="spUpdUser">
       <Parameter Name="IdUser" Mode="In" Type="Guid" />
+      <Parameter Name="NameUser" Mode="In" Type="String" />
+      <Parameter Name="LastNameUser" Mode="In" Type="String" />
       <Parameter Name="UserName" Mode="In" Type="String" />
-      <Parameter Name="LastName" Mode="In" Type="String" />
-      <Parameter Name="Name" Mode="In" Type="String" />
       <Parameter Name="Email" Mode="In" Type="String" />
-      <Parameter Name="Password" Mode="In" Type="String" />
-      <Parameter Name="UserType" Mode="In" Type="Boolean" />
-      <Parameter Name="Privaticy" Mode="In" Type="Boolean" />
+      <Parameter Name="PasswordUser" Mode="In" Type="String" />
       <Parameter Name="Latitud" Mode="In" Type="String" />
       <Parameter Name="Longitud" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="spInsAssignUserCompany">
-      <Parameter Name="Idcompany" Mode="In" Type="Guid" />
-      <Parameter Name="Iduser" Mode="In" Type="Guid" />
+    <FunctionImport Name="spInsUser">
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="Latitud" Mode="In" Type="String" />
+      <Parameter Name="Longitud" Mode="In" Type="String" />
+      <Parameter Name="playerId" Mode="In" Type="String" />
+      <Parameter Name="puskToken" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="spSelAssignUserCompany" ReturnType="Collection(ProyectosModel.spSelAssignUserCompany_Result)">
-      <Parameter Name="Iduser" Mode="In" Type="Guid" />
-    </FunctionImport>
-    <FunctionImport Name="spSelAllCompany" ReturnType="Collection(ProyectosModel.spSelAllCompany_Result)" />
+    <FunctionImport Name="spSelAllColony" ReturnType="Collection(ProyectosModel.spSelAllColony_Result)" />
   </EntityContainer>
-  <ComplexType Name="spSelCompany_Result">
-    <Property Type="Guid" Name="IdCompany" Nullable="false" />
-    <Property Type="String" Name="CompanyName" Nullable="false" MaxLength="100" />
-    <Property Type="String" Name="CompanyAddress" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="CompanyLatitud" Nullable="false" MaxLength="100" />
-    <Property Type="String" Name="CompanyLongitud" Nullable="false" MaxLength="100" />
+  <ComplexType Name="spSelAllInformationCartel_Result">
+    <Property Type="Guid" Name="IdInformationCartel" Nullable="false" />
     <Property Type="Guid" Name="IdUser" Nullable="false" />
-    <Property Type="Boolean" Name="CompanyActive" Nullable="false" />
+    <Property Type="String" Name="UrlImage" Nullable="false" MaxLength="Max" />
+    <Property Type="String" Name="CartelDescription" Nullable="false" MaxLength="Max" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+    <Property Type="Boolean" Name="Active" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spSelAssigmentColony_Result">
+    <Property Type="Guid" Name="IdAssigmentColony" Nullable="false" />
+    <Property Type="Guid" Name="IdColony" Nullable="false" />
+    <Property Type="Guid" Name="IdUser" Nullable="false" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+    <Property Type="Boolean" Name="Active" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spSelInformationCartel_Result">
+    <Property Type="Guid" Name="IdInformationCartel" Nullable="false" />
+    <Property Type="Guid" Name="IdUser" Nullable="false" />
+    <Property Type="String" Name="UrlImage" Nullable="false" MaxLength="Max" />
+    <Property Type="String" Name="CartelDescription" Nullable="false" MaxLength="Max" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+    <Property Type="Boolean" Name="Active" Nullable="false" />
   </ComplexType>
   <ComplexType Name="spSelToken_Result">
     <Property Type="Guid" Name="IdToken" Nullable="false" />
@@ -93,20 +125,12 @@
     <Property Type="String" Name="Latitud" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="Longitud" Nullable="true" MaxLength="100" />
   </ComplexType>
-  <ComplexType Name="spSelAssignUserCompany_Result">
-    <Property Type="Guid" Name="IdAssignUserCompany" Nullable="false" />
-    <Property Type="Guid" Name="IdCompany" Nullable="true" />
-    <Property Type="Guid" Name="IdUser" Nullable="true" />
-    <Property Type="DateTime" Name="DateCreated" Nullable="true" Precision="23" />
-    <Property Type="DateTime" Name="Datemodified" Nullable="true" Precision="23" />
-  </ComplexType>
-  <ComplexType Name="spSelAllCompany_Result">
-    <Property Type="Guid" Name="IdCompany" Nullable="false" />
-    <Property Type="String" Name="CompanyName" Nullable="false" MaxLength="100" />
-    <Property Type="String" Name="CompanyAddress" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="CompanyLatitud" Nullable="false" MaxLength="100" />
-    <Property Type="String" Name="CompanyLongitud" Nullable="false" MaxLength="100" />
-    <Property Type="Guid" Name="IdUser" Nullable="false" />
-    <Property Type="Boolean" Name="CompanyActive" Nullable="false" />
+  <ComplexType Name="spSelAllColony_Result">
+    <Property Type="Guid" Name="IdColony" Nullable="false" />
+    <Property Type="String" Name="ColonyName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ColonyAddress" Nullable="false" MaxLength="100" />
+    <Property Type="Guid" Name="IdProject" Nullable="false" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+    <Property Type="Boolean" Name="Active" Nullable="false" />
   </ComplexType>
 </Schema>
